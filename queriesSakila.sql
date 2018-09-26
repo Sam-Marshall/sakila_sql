@@ -106,4 +106,19 @@ select film.title, category.name
     inner join film on film.film_id=film_category.film_id
     where category.name = 'Family'; #7d
 
+select film.title, count(film.title) as 'Times Rented'
+	from inventory
+    inner join rental on inventory.inventory_id = rental.inventory_id
+    inner join film on inventory.film_id=film.film_id
+    group by film.title
+    order by count(film.title) desc; #7e
+    
+#7f. Write a query to display how much business, in dollars, each store brought in.
 
+
+select store.store_id, city.city, country.country
+	from city 
+    inner join country on city.country_id=country.country_id
+    inner join address on city.city_id=address.city_id
+    inner join store on address.address_id=store.address_id; #7g
+    
