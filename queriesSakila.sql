@@ -87,4 +87,23 @@ select film.title, language.name
     inner join language on film.language_id = language.language_id
     where language.name = 'English' and (film.title like 'k%' or film.title like 'q%'); #7a
     
+select actor.first_name, actor.last_name, film.title 
+	from actor
+    inner join film_actor on actor.actor_id=film_actor.actor_id
+    inner join film on film.film_id=film_actor.film_id
+    where film.title = 'Alone Trip'; #7b
+    
+select customer.first_name, customer.last_name, customer.email, country.country
+	from address
+    inner join city on address.city_id=city.city_id
+    inner join country on city.country_id=country.country_id
+    inner join customer on customer.address_id=address.address_id
+    where country.country = 'Canada'; #7c
+
+select film.title, category.name
+	from category
+    inner join film_category on category.category_id=film_category.category_id
+    inner join film on film.film_id=film_category.film_id
+    where category.name = 'Family'; #7d
+
 
